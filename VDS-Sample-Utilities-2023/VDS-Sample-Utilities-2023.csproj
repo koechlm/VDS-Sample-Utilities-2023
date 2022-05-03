@@ -137,7 +137,7 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Util.cs" />
-    <Compile Include="Vault.cs" />
+    <Compile Include="VdsSampleUtilities.cs" />
     <Compile Include="VdsSampleAdmin.cs" />
     <Compile Include="VdsSampleAdminForm.cs">
       <SubType>Form</SubType>
