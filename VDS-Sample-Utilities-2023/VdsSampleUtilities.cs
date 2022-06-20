@@ -82,7 +82,7 @@ namespace VdsSampleUtilities
             }
         }
 
-        
+
         /// <summary>
         /// LinkManager.GetLinkedChildren has an override list; the input is of type IEntity. 
         /// This wrapper allows to input commonly known object types, like Ids and entity names instead.
@@ -239,6 +239,133 @@ namespace VdsSampleUtilities
             return "FileNotFound";
         }
 
+
+        /// <summary>
+        /// Get the file iteration's properties with Display Names and Values
+        /// </summary>
+        /// <param name="conn">Current Vault connection ($VaultConnection)</param>
+        /// <param name="FileId">File iteration Id</param>
+        /// <param name="FileProperties">Name-Value map of Display Name and Values. All Values return as text.</param>
+        public void GetFileProps(Connection conn, long FileId, ref Dictionary<string, string> FileProperties)
+        {
+            PropDef[] mPropDefs = conn.WebServiceManager.PropertyService.GetPropertyDefinitionsByEntityClassId("FILE");
+            PropInst[] mSourcePropInsts = conn.WebServiceManager.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { FileId });
+            string mPropDispName;
+            string mPropVal;
+            string mThumbnailDispName = mPropDefs.Where(n => n.SysName == "Thumbnail").FirstOrDefault().DispName;
+            foreach (PropInst mFilePropInst in mSourcePropInsts)
+            {
+                mPropDispName = mPropDefs.Where(n => n.Id == mFilePropInst.PropDefId).FirstOrDefault().DispName;
+                //filter thumbnail property
+                if (mPropDispName != mThumbnailDispName)
+                {
+                    if (mFilePropInst.Val == null)
+                    {
+                        mPropVal = "";
+                    }
+                    else
+                    {
+                        mPropVal = mFilePropInst.Val.ToString();
+                    }
+                    FileProperties.Add(mPropDispName, mPropVal);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get Folder properties with Display Names and Values
+        /// </summary>
+        /// <param name="conn">Current Vault connection ($VaultConnection)</param>
+        /// <param name="FolderId">Folder Id</param>
+        /// <param name="FolderProperties">Name-Value map of Display Name and Values. All Values return as text.</param>
+        public void GetFolderProps(Connection conn, long FolderId, ref Dictionary<string, string> FolderProperties)
+        {
+            PropDef[] mPropDefs = conn.WebServiceManager.PropertyService.GetPropertyDefinitionsByEntityClassId("FLDR");
+            PropInst[] mSourcePropInsts = conn.WebServiceManager.PropertyService.GetPropertiesByEntityIds("FLDR", new long[] { FolderId });
+            string mPropDispName;
+            string mPropVal;
+
+            foreach (PropInst mFilePropInst in mSourcePropInsts)
+            {
+                mPropDispName = mPropDefs.Where(n => n.Id == mFilePropInst.PropDefId).FirstOrDefault().DispName;
+
+                if (mFilePropInst.Val == null)
+                {
+                    mPropVal = "";
+                }
+                else
+                {
+                    mPropVal = mFilePropInst.Val.ToString();
+                }
+                FolderProperties.Add(mPropDispName, mPropVal);
+            }
+        }
+
+
+        /// <summary>
+        /// Get Item properties with Display Names and Values
+        /// </summary>
+        /// <param name="conn">Current Vault connection ($VaultConnection)</param>
+        /// <param name="ItemId">Item Id</param>
+        /// <param name="ItemProperties">Name-Value map of Display Name and Values. All Values return as text.</param>
+        public void GetItemProps(Connection conn, long ItemId, ref Dictionary<string, string> ItemProperties)
+        {
+            PropDef[] mPropDefs = conn.WebServiceManager.PropertyService.GetPropertyDefinitionsByEntityClassId("ITEM");
+            PropInst[] mSourcePropInsts = conn.WebServiceManager.PropertyService.GetPropertiesByEntityIds("ITEM", new long[] { ItemId });
+            string mPropDispName;
+            string mPropVal;
+            string mThumbnailDispName = mPropDefs.Where(n => n.SysName == "Thumbnail").FirstOrDefault().DispName;
+            foreach (PropInst mFilePropInst in mSourcePropInsts)
+            {
+                mPropDispName = mPropDefs.Where(n => n.Id == mFilePropInst.PropDefId).FirstOrDefault().DispName;
+                //filter thumbnail property
+                if (mPropDispName != mThumbnailDispName)
+                {
+                    if (mFilePropInst.Val == null)
+                    {
+                        mPropVal = "";
+                    }
+                    else
+                    {
+                        mPropVal = mFilePropInst.Val.ToString();
+                    }
+                    ItemProperties.Add(mPropDispName, mPropVal);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get Custom Object properties with Display Names and Values
+        /// </summary>
+        /// <param name="conn">Current Vault connection ($VaultConnection)</param>
+        /// <param name="CustentId">Custom Object Id</param>
+        /// <param name="CustentProperties">Name-Value map of Display Name and Values. All Values return as text.</param>
+        public void GetCustentProps(Connection conn, long CustentId, ref Dictionary<string, string> CustentProperties)
+        {
+            PropDef[] mPropDefs = conn.WebServiceManager.PropertyService.GetPropertyDefinitionsByEntityClassId("CUSTENT");
+            PropInst[] mSourcePropInsts = conn.WebServiceManager.PropertyService.GetPropertiesByEntityIds("CUSTENT", new long[] { CustentId });
+            string mPropDispName;
+            string mPropVal;
+            string mThumbnailDispName = mPropDefs.Where(n => n.SysName == "Thumbnail").FirstOrDefault().DispName;
+            foreach (PropInst mFilePropInst in mSourcePropInsts)
+            {
+                mPropDispName = mPropDefs.Where(n => n.Id == mFilePropInst.PropDefId).FirstOrDefault().DispName;
+                //filter thumbnail property, as iLogic RuleArguments will fail reading it.
+                if (mPropDispName != mThumbnailDispName)
+                {
+                    if (mFilePropInst.Val == null)
+                    {
+                        mPropVal = "";
+                    }
+                    else
+                    {
+                        mPropVal = mFilePropInst.Val.ToString();
+                    }
+                    CustentProperties.Add(mPropDispName, mPropVal);
+                }
+            }
+        }
+
     }
 
 
@@ -393,7 +520,7 @@ namespace VdsSampleUtilities
             {
                 return null;
             }
-                
+
         }
 
 
@@ -467,7 +594,7 @@ namespace VdsSampleUtilities
                 {
                     //FDS Type
                     mFdsKeys.Add("FdsType", "FDS-Layout");
-                   
+
                     //FDS Property Set exists for syncronized layouts
                     foreach (PropertySet m_PropSet in m_Doc.PropertySets)
                     {
