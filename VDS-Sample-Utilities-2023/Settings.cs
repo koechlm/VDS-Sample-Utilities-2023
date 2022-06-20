@@ -18,9 +18,15 @@ using System.Xml.Serialization;
 
 namespace VdsSampleUtilities
 {
+    /// <summary>
+    /// Registered configuration points
+    /// </summary>
     [XmlRoot("settings")]
     public class Settings
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [XmlElement("SettingName")]
         public string mSettingName;
 
@@ -34,6 +40,9 @@ namespace VdsSampleUtilities
 
         }
 
+        /// <summary>
+        /// Write configuration points to external file.
+        /// </summary>
         public void Save()
         {
             try
@@ -51,6 +60,10 @@ namespace VdsSampleUtilities
             { }
         }
 
+        /// <summary>
+        /// Read configuration points from external file.
+        /// </summary>
+        /// <returns></returns>
         public static Settings Load()
         {
             Settings retVal = new Settings();

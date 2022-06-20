@@ -12,11 +12,16 @@ using System.Xml;
 [assembly: ExtensionId("2c1e3c5a-86ce-47c2-b4bb-1572121d8bd7")]
 
 namespace VdsSampleUtilities
-{
+{/// <summary>
+/// Event Handler Extension for VDS-PDMC-Sample Configuration environment
+/// </summary>
     public class EventHandlers : IWebServiceExtension
     {
         #region IWebServiceExtension Members
 
+        /// <summary>
+        /// Events registration
+        /// </summary>
         public void OnLoad()
         {
             #region register events

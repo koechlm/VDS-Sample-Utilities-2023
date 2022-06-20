@@ -14,9 +14,7 @@ using Inventor;
 using AcInterop = Autodesk.AutoCAD.Interop;
 using AcInteropCom = Autodesk.AutoCAD.Interop.Common;
 
-/// <summary>
-/// VDS Sample Library to extend VDS scripting capabilities.
-/// </summary>
+
 namespace VdsSampleUtilities
 {
     /// <summary>

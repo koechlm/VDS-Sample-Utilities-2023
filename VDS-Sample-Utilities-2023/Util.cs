@@ -24,9 +24,15 @@ using VDF = Autodesk.DataManagement.Client.Framework;
 
 namespace VdsSampleUtilities
 {
+    /// <summary>
+    /// SDK sample utilities
+    /// </summary>
     public class Util
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a"></param>
         public static void DoAction(Action a)
         {
             try
@@ -39,6 +45,10 @@ namespace VdsSampleUtilities
             }
         }
 
+        /// <summary>
+        /// Get the parent application's installation path
+        /// </summary>
+        /// <returns></returns>
         public static string GetAssemblyPath()
         {
             string prefix = "file:///";

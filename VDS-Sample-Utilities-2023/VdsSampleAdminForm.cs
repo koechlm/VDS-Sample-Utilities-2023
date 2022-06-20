@@ -11,8 +11,14 @@ using System.Windows.Forms;
 
 namespace VdsSampleUtilities
 {
+    /// <summary>
+    /// User interface for administrators; supports themes
+    /// </summary>
     public partial class VdsSampleAdminForm : DevExpress.XtraEditors.XtraForm
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public VdsSampleAdminForm()
         {
             InitializeComponent();
