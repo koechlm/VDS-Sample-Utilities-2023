@@ -152,6 +152,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <None Include="Key.snk" />
     <None Include="VdsSampleUtilities.vcet.config">
