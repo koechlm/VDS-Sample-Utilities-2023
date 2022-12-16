@@ -20,6 +20,7 @@ namespace VdsSampleUtilities
         public static bool mConfigPerm = false;
         public static bool mSettingsChanged = false;
         public bool mIsDarkTheme = VDF.Forms.SkinUtils.ThemeState.IsDarkTheme;
+        private string mCurrentTheme;
 
         IEnumerable<CommandSite> IExplorerExtension.CommandSites()
         {
@@ -57,20 +58,21 @@ namespace VdsSampleUtilities
                 mConfigPerm = true;
                 VdsSampleAdminForm mAdminWindow = new VdsSampleAdminForm();
 
-                if (Autodesk.DataManagement.Client.Framework.Forms.SkinUtils.WinFormsTheme.Instance.CurrentTheme == VDF.Forms.SkinUtils.Theme.Light)
+                mCurrentTheme = VDF.Forms.SkinUtils.WinFormsTheme.Instance.CurrentTheme.ToString();
+
+                if (mCurrentTheme == VDF.Forms.SkinUtils.Theme.Light.ToString())
                 {
-                    mAdminWindow.LookAndFeel.SetSkinStyle(Autodesk.iLogic.ThemeSkins.CustomThemeSkins.LightThemeName);
+                    mAdminWindow.LookAndFeel.SetSkinStyle(VDF.Forms.SkinUtils.CustomThemeSkins.LightThemeName);
                     mAdminWindow.IconOptions.Image = Properties.Resources.Open_Settings_16_Light;
                 }
-                if (Autodesk.DataManagement.Client.Framework.Forms.SkinUtils.WinFormsTheme.Instance.CurrentTheme == VDF.Forms.SkinUtils.Theme.Dark)
+                if (mCurrentTheme == VDF.Forms.SkinUtils.Theme.Dark.ToString())
                 {
-                    //Autodesk.iLogic.ThemeSkins.CustomThemeSkins.Register();
-                    mAdminWindow.LookAndFeel.SetSkinStyle(Autodesk.iLogic.ThemeSkins.CustomThemeSkins.DarkThemeName);
+                    mAdminWindow.LookAndFeel.SetSkinStyle(VDF.Forms.SkinUtils.CustomThemeSkins.DarkThemeName);
                     mAdminWindow.IconOptions.Image = Properties.Resources.Open_Settings_16_Dark;
                 }
-                if (Autodesk.DataManagement.Client.Framework.Forms.SkinUtils.WinFormsTheme.Instance.CurrentTheme == VDF.Forms.SkinUtils.Theme.Default)
+                if (mCurrentTheme == VDF.Forms.SkinUtils.Theme.Default.ToString())
                 {
-                    mAdminWindow.LookAndFeel.SetOffice2003Style();
+                    mAdminWindow.LookAndFeel.SetSkinStyle(VDF.Forms.SkinUtils.CustomThemeSkins.DefaultThemeName);
                 }
                 
                 mAdminWindow.ShowDialog();
