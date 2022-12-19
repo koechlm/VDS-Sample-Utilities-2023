@@ -21,7 +21,6 @@ namespace VdsSampleUtilities
     /// Class extending VDS Vault scripts
     /// </summary>
     public class VltHelpers
-
     {
         /// <summary>
         /// UserCredentials1 and UserCredentials2 differentiate overloads as powershell can't handle
