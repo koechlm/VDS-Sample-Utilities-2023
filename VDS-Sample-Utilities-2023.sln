@@ -28,6 +28,7 @@ Global
 		{C7E7114F-3198-49A8-8F57-E0304A2E7C94}.Debug|x64.Build.0 = Debug
 		{C7E7114F-3198-49A8-8F57-E0304A2E7C94}.Release|Any CPU.ActiveCfg = Release
 		{C7E7114F-3198-49A8-8F57-E0304A2E7C94}.Release|x64.ActiveCfg = Release
+		{C7E7114F-3198-49A8-8F57-E0304A2E7C94}.Release|x64.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

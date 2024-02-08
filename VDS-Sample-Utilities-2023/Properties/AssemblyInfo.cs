@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VDS-Sample-Utilities 2023")]
-[assembly: AssemblyDescription("VDS-Sample-Utilities & Event Handler 2023")]
+[assembly: AssemblyTitle("VDS-Sample-Utilities 2024")]
+[assembly: AssemblyDescription("VDS-Sample-Utilities & Event Handler 2024")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Autodesk")]
 [assembly: AssemblyProduct("Autodesk Vault Professional - VDS & API Sample")]
-[assembly: AssemblyCopyright("Copyright © Autodesk 2022")]
+[assembly: AssemblyCopyright("Copyright © Autodesk 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2023.2.0.1")]
-[assembly: AssemblyFileVersion("2023.2.0.1")]
+[assembly: AssemblyVersion("2024.0.0.0")]
+[assembly: AssemblyFileVersion("2024.0.0.0")]
